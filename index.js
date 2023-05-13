@@ -23,7 +23,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("DB connected"))
+  .then(() => console.log("DB connected")) // This will tell us if we are connected to the DB in our terminal.
   .catch((err) => console.error(err));
 
 const PORT = process.env.PORT;
