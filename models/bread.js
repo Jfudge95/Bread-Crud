@@ -13,8 +13,8 @@ const breadSchema = new mongoose.Schema({
     default: "https://thumbs.dreamstime.com/b/bread-cut-14027607.jpg",
   },
   baker: {
-    type: String,
-    enum: ["Rachel", "Ross", "Monica", "Joey", "Chandler", "Phoebe"], //These are the only valid options..and a Friend Reference
+    type: mongoose.Types.ObjectId, // Creating a relationship between bread and baker models. Baker is the parent of the child, bread. The child ALWAYS need to reference the parent.
+    ref: "Baker", //Referencing our baker model
   },
 });
 

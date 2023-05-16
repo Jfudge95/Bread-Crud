@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Bread = require("../models/bread");
+const Bread = require("../models/bread"); //This is a reference to our Bread Model
 
 //GET all the bread
 router.get("/", async (req, res) => {

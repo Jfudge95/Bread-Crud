@@ -2,7 +2,8 @@ const express = require("express");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const breadController = require("./controllers/bread");
+const breadController = require("./controllers/bread"); //Referencing our Bread Controller
+const bakerController = require("./controllers/baker"); //Referencing our Baker COntroller
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
 
 //routes
-app.use("/breads", breadController);
+app.use("/breads", breadController); //Bread Controller Route
+app.use("/baker", bakerController); //Baker Controller Route
 
 // db connection
 mongoose
