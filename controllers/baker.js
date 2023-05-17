@@ -1,6 +1,19 @@
 const router = require("express").Router();
 const Baker = require("../models/baker"); // Referencing our Baker Model
 
+router.get("/", async (req, res) => {
+  const bakers = await Baker.find().populate("breads"); //We named this bakers because we are getting all of the bakers....We populate out .find with our virtual call breads mentioned in the bakers model
+  res.json(bakers);
+});
+
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  const baker = await Baker.findById(id).populate("breads");
+  res.render("bakerShow", {
+    baker,
+  });
+});
+
 router.get("/data/seed", async (req, res) => {
   const data = [
     {

@@ -19,10 +19,12 @@ const breadSchema = new mongoose.Schema({
 });
 
 breadSchema.methods.getBakedBy = function () {
-  return `${this.name} was baked with love by ${this.baker}`;
+  return `${this.name} was baked with love by ${
+    this.baker.name
+  } who has been with us since ${this.baker.startDate.getFullYear()}`;
 };
 
-module.exports = mongoose.model("Bread", breadSchema);
+module.exports = mongoose.model("Bread", breadSchema); //When naming models always keep them singular. Because it is a model of 1
 
 // MVC is our Models, Views, and our Controllers.
 // Models is about our data and how it's structured
