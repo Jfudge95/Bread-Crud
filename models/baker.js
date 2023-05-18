@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Bread = require("./bread"); //We put this here because we are referencing the bread model on lines 25-27
 
 const bakerSchema = new mongoose.Schema(
   {
@@ -20,6 +21,10 @@ const bakerSchema = new mongoose.Schema(
     toJSON: { virtuals: true },
   }
 );
+
+bakerSchema.post("findOneAndDelete", async function () {
+  await Bread.deleteMany({ baker: this._conditions._id }); //This will delete the bread when we delete the baker who cooked the bread. AKA deletes child when we delete the parent.
+});
 
 bakerSchema.virtual("breads", {
   //We named this plural because virtuals will always be an array so we keep the name plural
