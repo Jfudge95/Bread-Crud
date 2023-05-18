@@ -4,12 +4,17 @@ const Baker = require("../models/baker"); //This is a reference to our Baker Mod
 
 //GET all the bread and bakers
 router.get("/", async (req, res) => {
-  const bread = await Bread.find();
-  const bakers = await Baker.find();
-  res.render("index", {
-    breads: bread,
-    bakers,
-  });
+  try {
+    const bread = await Bread.find();
+    const bakers = await Baker.find();
+    res.render("index", {
+      breads: bread,
+      bakers,
+    });
+  } catch (error) {
+    console.log("error:", error);
+    res.redirect("/breads"); //We TRY to run the above code. If it doesn't work than we get a console.log with the error and we are redirected to a safe place. This way our server doesnt constantly crash when we have errors
+  }
 });
 router.get("/new", async (req, res) => {
   const bakers = await Baker.find();
