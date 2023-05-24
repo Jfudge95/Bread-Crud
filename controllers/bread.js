@@ -55,13 +55,13 @@ router.post("/", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; // This { id } is called "Destructuring" You are extracting the data "id" and using it here.
   await Bread.findByIdAndDelete(id);
   res.status(303).redirect("/breads");
 });
 
 router.put("/:id", async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; // This { id } is called "Destructuring" You are extracting the data "id" and using it here.
   if (!req.body.image) req.body.image = "undefined";
 
   if (req.body.hasGluten === "on") {
@@ -111,3 +111,5 @@ router.get("/data/seed", async (req, res) => {
 module.exports = router;
 
 // Data seeding = process of populating a database with an initial set of data. We will be using fake data to test our program before we use real data.
+
+// Destructuring = Destructuring is a convenient way of creating new variables by extracting some values from data stored in objects or arrays. Destructuring makes it easy to extract only what is needed.

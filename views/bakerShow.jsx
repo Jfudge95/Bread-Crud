@@ -25,3 +25,5 @@ function Show({ baker }) {
 }
 
 module.exports = Show;
+
+// Again, we are Destructuring baker (data notated on ln 4 { baker }) so we can extract the data and use it in our function Show
